@@ -15,7 +15,7 @@ export default function ReportsFormPage() {
         if (!id) {
             return;
         }
-        axios.get('/reports/' + id).then(response => {
+        axios.get('/server/reports/' + id).then(response => {
             const { data } = response;
             setTitle(data.title);
             setPhone(data.phone);
@@ -51,13 +51,13 @@ export default function ReportsFormPage() {
         };
         if (id) {
             // update 
-            await axios.put('/reports', {
+            await axios.put('/server/reports', {
                 id, ...reportData
             });
             setRedirect(true);
         } else {
             // new report 
-            await axios.post('/reports', reportData);
+            await axios.post('/server/reports', reportData);
             setRedirect(true);
         }
     }

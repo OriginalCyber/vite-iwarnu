@@ -13,7 +13,7 @@ export default function AccountPage() {
     }
 
     async function logout() {
-        await axios.post('/logout');
+        await axios.post('/server/logout');
         setRedirect('/')
         setUser(null);
     }
