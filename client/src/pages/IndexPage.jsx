@@ -20,7 +20,7 @@ export default function IndexPage() {
 
             <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
                 {reports.length > 0 && reports.map(report => (
-                    <Link to={'/server/report/' + report._id}>
+                    <Link to={'/report/' + report._id}>
                         <div className="bg-gray-500 mb-2 rounded-2xl flex">
                         </div>
                         <h2 className="font-bold">สถานที่ที่เกิดเหตุ {report.address}</h2>
