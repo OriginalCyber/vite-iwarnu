@@ -4,8 +4,8 @@
     "framework": "vite",
     "rewrites": [
         {
-            "source": "/server/(.*)",
-            "destination": "/server/index.cjs"
+            "source": "/(.*)",
+            "destination": "/index.cjs"
         }
     ]
 }
