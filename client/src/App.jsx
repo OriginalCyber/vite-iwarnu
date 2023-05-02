@@ -10,6 +10,9 @@ import ReportPage from "./pages/ReportPage";
 import ReportsFormPage from "./pages/ReportsFormPage";
 import ReportsPage from "./pages/ReportsPage";
 
+
+// axios.defaults.baseURL = 'http://localhost:4000';
+// axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
 axios.defaults.withCredentials = true;
 
