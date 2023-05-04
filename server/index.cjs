@@ -17,12 +17,10 @@ const jwtSecret = "fasefraw4r5r3wq45wdfgw34twdfg";
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    credentials: true,
-    origin: 'http://localhost:5173',
-  })
+app.use(cors({ credentials: true, origin: 'http://localhost:5173' })
 );
+
+
 
 app.get("/test", (req, res) => {
   mongoose.connect(process.env.MONGO_URL);

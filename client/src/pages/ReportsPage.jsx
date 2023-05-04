@@ -1,18 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import AccountNav from "../AccountNav";
 
 export default function ReportsPage() {
     const [reports, setReports] = useState([]);
     useEffect(() => {
-        axios.get('/reports').then(({ data }) => {
+        axios.get('/reports/').then(({ data }) => {
             setReports(data);
         })
     }, []);
     return (
         <div>
-            <AccountNav />
             <div className="text-center">
                 <Link className="inline-flex gap-1 bg-primary text-white py-2 px-6 rounded-full" to={'/reports/new'}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
@@ -23,12 +21,14 @@ export default function ReportsPage() {
             </div>
             <div className="mt-4">
                 {reports.length > 0 && reports.map(report => (
-                    <Link to={'/reports/' + report._id} className="flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl">
-                        <div className="grow-0 shrink">
-                            <h2 className="text-xl">{report.title}</h2>
-                            <p className="text-sm mt-2">{report.description}</p>
-                        </div>
-                    </Link>
+                    <>
+                        <Link to={'/reports/' + report._id} className="flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl">
+                            <div className="grow-0 shrink">
+                                <h2 className="text-xl">{report.title}</h2>
+                                <p className="text-sm mt-2">{report.description}</p>
+                            </div>
+                        </Link>
+                    </>
                 ))}
             </div>
         </div>
