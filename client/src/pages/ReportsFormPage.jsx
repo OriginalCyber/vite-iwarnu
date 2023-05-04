@@ -15,7 +15,7 @@ export default function ReportsFormPage() {
         if (!id) {
             return;
         }
-        axios.get('/server/reports' + id).then(response => {
+        axios.get('/reports' + id).then(response => {
             const { data } = response;
             setTitle(data.title);
             setPhone(data.phone);
