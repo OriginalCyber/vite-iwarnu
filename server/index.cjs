@@ -113,7 +113,6 @@ app.get("/server/reports", (req, res) => {
   const { token } = req.cookies;
   jwt.verify(token, jwtSecret, {}, async (err, reportData) => {
     res.json(await Report.find({}));
-    console.log(data)
   });
 });
 
@@ -126,7 +125,7 @@ app.get("/server/reports/:id", async (req, res) => {
 app.put("/server/reports", async (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
   const { token } = req.cookies;
-  const { id, title, phone, date, time, address, description, added, } = req.body;
+  const { id, title, phone, date, time, address, description } = req.body;
   jwt.verify(token, jwtSecret, {}, async (err, reportData) => {
     if (err) throw err;
     const reportDoc = await Report.findById(id);
