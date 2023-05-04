@@ -23,7 +23,7 @@ export default function ReportsPage() {
             </div>
             <div className="mt-4">
                 {reports.length > 0 && reports.map(report => (
-                    <Link to={'/reports' + report._id} className="flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl">
+                    <Link to={'/reports/' + report._id} className="flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl">
                         <div className="grow-0 shrink">
                             <h2 className="text-xl">{report.title}</h2>
                             <p className="text-sm mt-2">{report.description}</p>

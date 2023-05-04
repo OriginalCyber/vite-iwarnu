@@ -1,11 +1,10 @@
-/* eslint-disable react/jsx-key */
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function IndexPage() {
 
-    const [report, setReports] = useState([]);
+    const [reports, setReports] = useState([]);
     useEffect(() => {
         axios.get('/reports').then(response => {
             setReports(response.data);
@@ -13,16 +12,15 @@ export default function IndexPage() {
     }, []);
 
     return (
-        <>
+        <div>
+
             <div className="pt-12">
                 <Link to="/ReportsFormPage">ReportPage</Link>
             </div>
 
             <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-                {report.length > 0 && report.map(report => (
-                    <Link to={'/report' + report._id}>
-                        <div className="bg-gray-500 mb-2 rounded-2xl flex">
-                        </div>
+                {reports.length > 0 && reports.map(report => (
+                    <Link to={'/report/' + report._id}>
                         <h2 className="font-bold">สถานที่ที่เกิดเหตุ {report.address}</h2>
                         <h3 className="text-sm text-gray-500">เรื่องที่ร้องเรียน {report.title}</h3>
                         <h3 className="text-sm text-gray-500">เบอร์โทรศัพท์ {report.phone}</h3>
@@ -32,6 +30,6 @@ export default function IndexPage() {
                     </Link>
                 ))}
             </div>
-        </>
+        </div>
     );
 }
