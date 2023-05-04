@@ -5,7 +5,11 @@
     "rewrites": [
         {
             "source": "/server/(.*)",
-            "destination": "/server/index.cjs"
+            "destination": "/server/index.js"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/"
         }
     ]
 }
