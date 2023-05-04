@@ -6,7 +6,7 @@ import AccountNav from "../AccountNav";
 export default function ReportsPage() {
     const [reports, setReports] = useState([]);
     useEffect(() => {
-        axios.get('/reports').then(({ data }) => {
+        axios.get('/server/reports').then(({ data }) => {
             setReports(data);
         })
     }, []);

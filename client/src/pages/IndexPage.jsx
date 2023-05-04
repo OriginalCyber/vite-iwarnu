@@ -6,7 +6,7 @@ export default function IndexPage() {
 
     const [reports, setReports] = useState([]);
     useEffect(() => {
-        axios.get('/reports').then(response => {
+        axios.get('/server/reports').then(response => {
             setReports(response.data);
         });
     }, []);

@@ -11,7 +11,7 @@ export default function ReportPage() {
         if (!id) {
             return;
         }
-        axios.get(`/reports/${id}`).then(response => {
+        axios.get(`/server/reports/${id}`).then(response => {
             setReport(response.data);
         });
     }, [id]);
