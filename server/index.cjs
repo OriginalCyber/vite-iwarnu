@@ -113,6 +113,7 @@ app.get("/server/reports", (req, res) => {
   const { token } = req.cookies;
   jwt.verify(token, jwtSecret, {}, async (err, reportData) => {
     res.json(await Report.find({}));
+    console.log(data)
   });
 });
 
