@@ -24,13 +24,13 @@ app.use(
   })
 );
 
-app.get("/server/test", (req, res) => {
+app.get("/test", (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
   res.json("test ok");
   console.log("connect database")
 });
 
-app.post("/server/register", async (req, res) => {
+app.post("/register", async (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
   const { name, email, password, number, phone, agency } = req.body;
   try {
@@ -48,7 +48,7 @@ app.post("/server/register", async (req, res) => {
   }
 });
 
-app.post("/server/login", async (req, res) => {
+app.post("/login", async (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
   const { email, password } = req.body;
   const userDoc = await User.findOne({ email });
@@ -75,7 +75,7 @@ app.post("/server/login", async (req, res) => {
   }
 });
 
-app.get("/server/profile", (req, res) => {
+app.get("/profile", (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
   const { token } = req.cookies;
   if (token) {
@@ -91,11 +91,11 @@ app.get("/server/profile", (req, res) => {
   }
 });
 
-app.post("/server/logout", (req, res) => {
+app.post("/logout", (req, res) => {
   res.cookie("token", "").json(true);
 });
 
-app.post("/server/reports", async (req, res) => {
+app.post("/reports", async (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
   const { title, phone, date, time, address, description } = req.body;
   try {
@@ -108,7 +108,7 @@ app.post("/server/reports", async (req, res) => {
   }
 })
 
-app.get("/server/reports", (req, res) => {
+app.get("/reports", (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
   const { token } = req.cookies;
   jwt.verify(token, jwtSecret, {}, async (err, reportData) => {
@@ -116,13 +116,13 @@ app.get("/server/reports", (req, res) => {
   });
 });
 
-app.get("/server/reports/:id", async (req, res) => {
+app.get("/reports/:id", async (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
   const { id } = req.params;
   res.json(await Report.findById(id));
 });
 
-app.put("/server/reports", async (req, res) => {
+app.put("/reports", async (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
   const { token } = req.cookies;
   const { id, title, phone, date, time, address, description } = req.body;
@@ -145,7 +145,7 @@ app.put("/server/reports", async (req, res) => {
   });
 });
 
-app.get("/server/reports", async (req, res) => {
+app.get("/reports", async (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
   res.json(await Report.find());
 });
