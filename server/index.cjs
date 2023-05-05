@@ -19,12 +19,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    credentials: 'include',
     credentials: true,
     origin: 'http://localhost:5173',
   })
 );
-
 
 
 app.get("/test", (req, res) => {
@@ -78,7 +76,7 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.get("/profile", (req, res) => {
+app.get("/profile", async (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
   const { token } = req.cookies;
   if (token) {

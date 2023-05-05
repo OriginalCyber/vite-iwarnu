@@ -12,13 +12,13 @@ export default function ShowPaage() {
     }, []);
 
     return (
-        <div>
+        <>
             <div className="pt-12">
                 <Link to="/ReportsFormPage">ReportPage</Link>
             </div>
 
 
-            <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+            <div key='alial1' className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-3" >
                 {reports.length > 0 && reports.map(report => (
                     <>
                         <Link to={'/report/' + report._id}>
@@ -32,9 +32,6 @@ export default function ShowPaage() {
                     </>
                 ))}
             </div>
-
-
-
-        </div>
+        </>
     )
 }
