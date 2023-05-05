@@ -3,22 +3,20 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function ShowPaage() {
-
     const [reports, setReports] = useState([]);
     useEffect(() => {
-        axios.get('/reports').then(response => {
-            setReports(response.data);
+        axios.get('/reports/').then(({ data }) => {
+            setReports(data);
         });
     }, []);
-
     return (
-        <>
+        <div>
             <div className="pt-12">
                 <Link to="/ReportsFormPage">ReportPage</Link>
             </div>
 
 
-            <div key='alial1' className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-3" >
+            <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
                 {reports.length > 0 && reports.map(report => (
                     <>
                         <Link to={'/report/' + report._id}>
@@ -32,6 +30,9 @@ export default function ShowPaage() {
                     </>
                 ))}
             </div>
-        </>
+
+
+
+        </div>
     )
 }

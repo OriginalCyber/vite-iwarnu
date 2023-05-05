@@ -12,9 +12,7 @@ export default function ReportsFormPage() {
     const [address, setAddress] = useState('');
     const [redirect, setRedirect] = useState(false);
     useEffect(() => {
-        if (!id) {
-            return;
-        }
+
         axios.get('/reports' + id).then(response => {
             const { data } = response;
             setTitle(data.title);
