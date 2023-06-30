@@ -11,35 +11,12 @@ export default function ShowPaage() {
         });
     }, []);
 
-    const [items, setItems] = useState([])
-
-    useEffect(() => {
-        fetch('https://sleepy-ray-pocket.cyclic.app')
-            .then(res => res.json())
-            .then((result) => {
-                console.log(result)
-                setItems(result)
-            })
-    }, [])
 
     return (
         <div>
             <div className="pt-12">
                 <Link to="/ReportsFormPage">ReportPage</Link>
             </div>
-
-            <div>
-                <div>
-                    <ul>
-                        {items.map((item) => (
-                            <li key={item.id}>
-                                {item.name}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-
 
 
             <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
