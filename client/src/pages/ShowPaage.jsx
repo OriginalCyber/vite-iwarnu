@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function ShowPaage() {
+
     const [reports, setReports] = useState([]);
     useEffect(() => {
-        axios.get('/reports/').then(({ data }) => {
-            setReports(data);
+        axios.get('/reports').then(response => {
+            setReports(response.data);
         });
     }, []);
+
     return (
         <div>
             <div className="pt-12">
