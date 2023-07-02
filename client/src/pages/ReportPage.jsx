@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import AddressLink from "../AddressLink";
 
-
 export default function ReportPage() {
     const { id } = useParams();
     const [report, setReport] = useState(null);

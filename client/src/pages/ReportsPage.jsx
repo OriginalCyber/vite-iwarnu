@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function ReportsPage() {
     const [reports, setReports] = useState([]);
     useEffect(() => {
-        axios.get('/reports/').then(({ data }) => {
+        axios.get('/reports').then(({ data }) => {
             setReports(data);
         })
     }, []);
