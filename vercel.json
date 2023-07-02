@@ -6,10 +6,6 @@
         {
             "source": "/server/(.*)",
             "destination": "/server/index.cjs"
-        },
-        {
-            "source": "/(.*)",
-            "destination": "/"
         }
     ]
 }
