@@ -1,9 +1,15 @@
 {
-    "version": 2,
-    "builds": [
+    "buildCommand": "&& cd.. && cd client && npm install && ./node_modules/vite/bin/vite.js build",
+    "outputDirectory": "client/dist",
+    "framework": "vite",
+    "rewrites": [
         {
-            "src": "*.cjs",
-            "use": "@vercel/node"
+            "source": "/server/(.*)",
+            "destination": "/server/index.cjs"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/"
         }
     ]
 }
