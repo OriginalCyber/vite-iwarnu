@@ -4,8 +4,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("./models/User.cjs");
-const Report = require("./models/Report.cjs");
+const User = require("./models/User.js");
+const Report = require("./models/Report.js");
 const cookieParser = require("cookie-parser");
 
 require("dotenv").config();
