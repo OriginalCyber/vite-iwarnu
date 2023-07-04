@@ -11,6 +11,7 @@ const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 const app = express();
+
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = "fasefraw4r5r3wq45wdfgw34twdfg";
 
@@ -22,7 +23,6 @@ app.use(
     origin: 'http://localhost:5173',
   })
 );
-
 
 app.get("/server/test", (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
