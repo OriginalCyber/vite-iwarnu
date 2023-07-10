@@ -126,7 +126,7 @@ app.get("/server/reports/:id", async (req, res) => {
 app.put("/server/reports", async (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
   const { token } = req.cookies;
-  const { id, title, phone, date, time, address, description, added, } = req.body;
+  const { id, title, phone, date, time, address, description, } = req.body;
   jwt.verify(token, jwtSecret, {}, async (err, reportData) => {
     if (err) throw err;
     const reportDoc = await Report.findById(id);
@@ -144,6 +144,14 @@ app.put("/server/reports", async (req, res) => {
       res.json("ok");
     }
   });
+});
+
+app.delete("/server/reports/:id", async (req, res) => {
+  mongoose.connect(process.env.MONGO_URL);
+  const id = req.params.id
+  console.log(id)
+  const data = await Report.deleteOne({ _id: id })
+  res.send({ success: true, message: "data delete successfully", data: data })
 });
 
 app.get("/server/reports", async (req, res) => {
